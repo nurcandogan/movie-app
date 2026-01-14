@@ -12,9 +12,14 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { fallbackMoviePoster, image185 } from "../api/Moviedb";
 
+interface Movie {
+	poster_path: string;
+	title: string;
+}
+
 interface MovieListProps {
 	title: string;
-	data: any;
+	data: Movie[];
 	hideSeeAll: any;
 }
 
@@ -40,7 +45,7 @@ const MovieList = ({ title, data, hideSeeAll }: MovieListProps) => {
 				showsHorizontalScrollIndicator={false}
 				contentContainerStyle={{ paddingHorizontal: 15 }}
 			>
-				{data.map((item, index) => {
+				{data.map((item: Movie, index: number) => {
 					return (
 						<TouchableWithoutFeedback
 							key={index}
